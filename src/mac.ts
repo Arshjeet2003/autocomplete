@@ -35,6 +35,10 @@ const completionSpec: Fig.Spec = {
       description: "Used to show all commands available",
     },
     {
+      name: "terminal_proxy_toggle",
+      description: "Used to set proxy for terminal",
+    },
+    {
       name: "connect_wifi",
       description: "Used to connect to wifi",
       args: [
