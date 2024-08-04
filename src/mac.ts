@@ -7,6 +7,16 @@ const commands: Fig.Generator = {
   },
 };
 
+const commonWifi: Fig.Generator = {
+  script: ["mac", "common_wifi"],
+  postProcess: (output) => {
+    return output.split("\n").map((wifiname) => {
+      return { name: wifiname };
+    });
+  },
+};
+
+
 const completionSpec: Fig.Spec = {
   name: "mac",
   description: "My personal commands",
@@ -23,6 +33,22 @@ const completionSpec: Fig.Spec = {
     {
       name: "commands",
       description: "Used to show all commands available",
+    },
+    {
+      name: "connect_wifi",
+      description: "Used to connect to wifi",
+      args: [
+      {
+        name: "name",
+        description: "Enter wifi name",
+        generators: commonWifi,
+      },
+      {
+        name: "password",
+        description: "Enter wifi password",
+        isOptional: true,
+      },
+    ]
     },
   ],
 };
